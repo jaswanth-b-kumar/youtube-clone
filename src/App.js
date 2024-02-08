@@ -1,11 +1,18 @@
+import React from 'react';
+
+import Header from './components/header/Header';
+import Sidebar from './components/sidebar/Sidebar';
+
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        Youtube Clone App
-      </header>
+    <div>
+      <Header />
+      <div className="app-container">
+        <Sidebar />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
