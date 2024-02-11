@@ -9,6 +9,7 @@
     width: 250px;
     height: 90vh;
     padding-top: 2rem;
+    transition: all 0.5s ease;
 
     li {
         display: flex;
@@ -35,7 +36,7 @@
     }
 
     &.open{
-        display: block;
+        transform: translateX(0%);
     }
 }
 
@@ -51,11 +52,17 @@
         span{
             display: none;
         }
+
+        &.open{
+            width: 90px;
+        }
     }
 }
 
 @media (max-width: $breakpoint-small){
     .sidebar{
-        display: none;
+        transform: translateX(-100%);
+        width: 0%;
+        overflow: hidden;
     }
 }
