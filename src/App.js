@@ -38,7 +38,7 @@ function App() {
       <Route path="/youtube-clone/auth"
         element={
           <Layout>
-            <HomeScreen />
+            <LoginScreen />
           </Layout>
         }>
       </Route>
