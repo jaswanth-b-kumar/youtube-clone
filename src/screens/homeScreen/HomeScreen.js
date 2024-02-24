@@ -10,8 +10,8 @@ function HomeScreen() {
         <CategoriesBar />
         <Row>
             {
-                [...new Array(20)].map(() => {
-                    return <Col lg={3} md={4}>
+                [...new Array(20)].map((key) => {
+                    return <Col lg={3} md={4} key={key}>
                         <Video />
                     </Col>
                 })
