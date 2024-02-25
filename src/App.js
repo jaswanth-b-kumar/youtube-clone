@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Header from './components/header/Header';
 import Sidebar from './components/sidebar/Sidebar';
@@ -6,11 +6,22 @@ import { Container } from 'react-bootstrap';
 import LoginScreen from './screens/loginScreen/LoginScreen';
 import HomeScreen from './screens/homeScreen/HomeScreen';
 import './assets/css/_app.scss';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Layout = ({ children }) => {
   const [sidebar, toggleSidebar] = useState(false);
   const handleToggleSidebar = () => toggleSidebar(value => !value)
+
+
+  const {accessToken, loading} = useSelector(state => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(!accessToken && !loading){
+      navigate('/youtube-clone/auth')
+    }
+  })
 
   return (
     <div>
@@ -26,8 +37,7 @@ const Layout = ({ children }) => {
 }
 
 function App() {
-  return <Router>
-    <Routes>
+  return <Routes>
       <Route path="/youtube-clone/"
         element={
           <Layout>
@@ -37,9 +47,7 @@ function App() {
       </Route>
       <Route path="/youtube-clone/auth"
         element={
-          <Layout>
             <LoginScreen />
-          </Layout>
         }>
       </Route>
       <Route path="/youtube-clone/search"
@@ -53,7 +61,6 @@ function App() {
         
       </Route>
     </Routes>
-  </Router>
 
 }
 
