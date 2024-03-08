@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './_video.scss';
+import request from '../../api';
 
 import { AiFillEye } from 'react-icons/ai'
 
-function Video() {
+const Video = ({ video }) => {
+  const { id, snippet : {channelID,channelTitle,title,publishedAt,thumbnails : {medium}}} = video
+  useEffect(() => {
+    const get_video_details = async() => {
+      const {data:{items}} = await request('/videos',{
+        params: {
+          part: 'contentDetails,statistics',
+          id: id
+        }
+      })
+      console.log(items)
+    }
+    get_video_details();
+  },[id])
   return (
     <div className="video">
       <div className="video-top">
         <img
-          src="https://i.ytimg.com/vi/uJMCNJP2ipI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBfSybvWkY5c3KqSqZ0SZBksn38qw"
+          src={medium.url}
           alt=""
         />
-        <span>05:43</span>
+        <span></span>
       </div>
       <div title="Dummy Video Title" className="video-title">
         Dummy Video Title
