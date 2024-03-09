@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './_categoriesBar.scss';
+import { getVideosByCategory } from '../../redux/actions/videos.action';
+import { useDispatch } from 'react-redux';
 
 const keywords = [
   'All',
@@ -22,11 +24,13 @@ const keywords = [
   'React Router',
 ]
 
-function CategoriesBar() {
+const CategoriesBar = () =>  {
   const [activeElement, setActiveElement] = useState('All')
+  const dispatch = useDispatch();
 
   const handleClick = (value) => {
     setActiveElement(value)
+    dispatch(getVideosByCategory(value))
   }
 
   return <div className="categories-bar">
