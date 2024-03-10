@@ -4,6 +4,7 @@ export const homeVideosReducer = (state = {
     videos: [],
     loading: false,
     nextPageToken: null,
+    activeCategory: 'All'
 }, action) => {
     const { type, payload } = action
     switch (type) {
@@ -11,7 +12,8 @@ export const homeVideosReducer = (state = {
             return {
                 ...state,
                 videos: payload.videos,
-                loading: false
+                loading: false,
+                activeCategory: payload.category
             }
 
         case HOME_VIDEOS_FAIL:
