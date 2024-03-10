@@ -4,7 +4,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import Video from "../../components/video/Video";
 import CategoriesBar from "../../components/categoriesBar/CategoriesBar";
 import { useDispatch, useSelector } from 'react-redux';
-import {getPopularVideos} from '../../redux/actions/videos.action'
+import {getPopularVideos} from '../../redux/actions/videos.action';
+import "./_homeScreen.scss"
 
 function HomeScreen() {
     const dispatch = useDispatch();
